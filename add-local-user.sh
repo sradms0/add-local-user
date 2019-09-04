@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # Enforces that it be executed with superuser (root) privileges. 
 
