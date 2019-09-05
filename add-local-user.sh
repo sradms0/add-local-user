@@ -9,16 +9,17 @@ fi
 
 echo '*** Create a new user ****'
 
-# Prompt for username to create
+# Prompt for username to create.
 read -p 'Enter username: ' USERNAME
 
-# Prompt for the name for person who will be using the account
+# Prompt for the name for person who will be using the account.
 read -p 'Enter account holder name: ' COMMENT
 
 # Prompt for the initial password for the account.
 read -p 'Enter password: ' PASSWORD
 
-# Creates a new user on the local system with the input provided by the user.
+# Create a new user on the local system with the input provided by the user.
+useradd -c "${COMMENT}" -m "${USERNAME}"
 
 # Informs the user if the account was not able to be created for some reason. 
 
