@@ -13,7 +13,11 @@ echo '*** Create a new user ****'
 read -p 'Enter username: ' USERNAME
 echo "${USERNAME}"
 
-# the name for person who will be using the account, and the initial password for the account.
+# Prompt for the name for person who will be using the account
+read -p 'Enter account holder name: ' COMMENT
+echo "${COMMENT}"
+
+# Prompt for the initial password for the account.
 
 # Creates a new user on the local system with the input provided by the user.
 
