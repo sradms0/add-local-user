@@ -7,9 +7,13 @@ then
     exit 1
 fi
 
-# Prompts the person who executed the script to enter the username (login), 
-# the name for person who will be using the account, and the initial password for the account.
+echo '*** Create a new user ****'
 
+# Prompt for username to create
+read -p 'Enter username: ' USERNAME
+echo "${USERNAME}"
+
+# the name for person who will be using the account, and the initial password for the account.
 
 # Creates a new user on the local system with the input provided by the user.
 
