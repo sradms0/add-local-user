@@ -18,10 +18,13 @@ read -p 'Enter account holder name: ' COMMENT
 # Prompt for the initial password for the account.
 read -p 'Enter password: ' PASSWORD
 
-# Create a new user on the local system with the input provided by the user.
+# Create the user.
 useradd -c "${COMMENT}" -m "${USERNAME}"
 
-# Informs the user if the account was not able to be created for some reason. 
+# Set the password for the user
+echo "${USERNAME}:${PASSWORD}" | chpasswd
+
+# Inform the user if the account was not able to be created for some reason. 
 
 # If the account is not created, the script is to return an exit status of 1.
 
