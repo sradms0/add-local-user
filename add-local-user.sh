@@ -31,4 +31,6 @@ then
     exit 1
 fi
 
-# Displays the username, password, and host where the account was created. 
+# Display the username, password, and host where the account was created. 
+echo "*** User successfully created at $(hostname)***"
+echo "username: ${USERNAME} password: ${PASSWORD}"
