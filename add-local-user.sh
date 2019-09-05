@@ -24,6 +24,9 @@ useradd -c "${COMMENT}" -m "${USERNAME}"
 # Set the password for the user
 echo "${USERNAME}:${PASSWORD}" | chpasswd
 
+# Force password change on first login
+passwd -e ${USERNAME}
+
 # Inform the user if the account was not able to be created for some reason. 
 if [[ "${?}" -ne 0 ]]
 then
