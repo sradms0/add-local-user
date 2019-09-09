@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script adds a local user to the system.
+
 # Enforce exectution with superuser (root) privileges.
 if [[ "${UID}" -ne 0 ]]
 then 
