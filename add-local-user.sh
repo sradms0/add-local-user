@@ -5,14 +5,14 @@
 # Enforce exectution with superuser (root) privileges.
 if [[ "${UID}" -ne 0 ]]
 then 
-    echo "Root privileges are required" 
+    echo "Root privileges are required" >&2
     exit 1
 fi
 
 # Inform the user the correct argument length (2) was not provided.
 if [[ "${#}" -lt 2 ]]
 then
-    echo "Usage: ${0} [USER_NAME] [ACCOUNT_HOLDER]"
+    echo "Usage: ${0} [USER_NAME] [ACCOUNT_HOLDER]" >&2
     exit 1
 fi
 
@@ -40,7 +40,7 @@ passwd -e "${USERNAME}"
 # Inform the user if the account was not able to be created for some reason. 
 if [[ "${?}" -ne 0 ]]
 then
-    echo 'Unable to create this account'
+    echo 'Unable to create this account' >&2
     exit 1
 fi
 
