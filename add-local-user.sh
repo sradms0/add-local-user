@@ -29,13 +29,13 @@ RANDOM_NUM=$(echo "${RANDOM}" | head -c1)
 PASSWORD="${RANDOM_NUM}${SHUFFLED_SYMBOL}${SHUFFLED_DATE}"
 
 # Create the user.
-useradd -c "${COMMENT}" -m "${USERNAME}"
+useradd -c "${COMMENT}" -m "${USERNAME}" &> /dev/null
 
 # Set the password for the user.
-echo "${USERNAME}:${PASSWORD}" | chpasswd
+echo "${USERNAME}:${PASSWORD}" | chpasswd &> /dev/null
 
 # Prompt user for new password upon first login
-passwd -e "${USERNAME}"
+passwd -e "${USERNAME}" &> /dev/null
 
 # Inform the user if the account was not able to be created for some reason. 
 if [[ "${?}" -ne 0 ]]
@@ -45,5 +45,5 @@ then
 fi
 
 ## Display the username, password, and host where the account was created. 
-echo "*** User successfully created at $(hostname)***"
+echo "***User successfully created at $(hostname)***"
 echo "username: ${USERNAME} password: ${PASSWORD}"
