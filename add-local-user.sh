@@ -10,7 +10,7 @@ then
 fi
 
 # Inform the user the correct argument length (2) was not provided.
-if [[ "${#}" -ne 2 ]]
+if [[ "${#}" -lt 2 ]]
 then
     echo "Usage: ${0} [USER_NAME] [ACCOUNT_HOLDER]"
     exit 1
@@ -18,7 +18,8 @@ fi
 
 # Store username and comment (account holder).
 USERNAME="${1}"
-COMMENT="${2}"
+shift
+COMMENT="${@}"
 
 # Generate a random password.
 SYMBOLS='$%^&*()_-+=@'
@@ -32,6 +33,9 @@ useradd -c "${COMMENT}" -m "${USERNAME}"
 
 # Set the password for the user.
 echo "${USERNAME}:${PASSWORD}" | chpasswd
+
+# Prompt user for new password upon first login
+passwd -e "${USERNAME}"
 
 # Inform the user if the account was not able to be created for some reason. 
 if [[ "${?}" -ne 0 ]]
