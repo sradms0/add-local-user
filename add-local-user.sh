@@ -23,10 +23,10 @@ COMMENT="${@}"
 
 # Generate a random password.
 SYMBOLS='$%^&*()_-+=@'
-SHUFFLED_SYMBOL=$( echo "${SYMBOLS}" | fold -w1 | shuf | head -c1 )
-SHUFFLED_DATE=$( echo $(date +%s%N | fold -w1 | shuf) | tr -d ' ' | head -c5)
+SHUFFLED_SYMBOL=$( echo "${SYMBOLS}" | fold -w1 | shuf | head -c1)
+SHUFFLED_DATE=$(echo $(date +%s%N | fold -w1 | shuf))
 RANDOM_NUM=$(echo "${RANDOM}" | head -c1)
-PASSWORD="${RANDOM_NUM}${SHUFFLED_SYMBOL}${SHUFFLED_DATE}"
+PASSWORD=$(echo "${RANDOM_NUM}${SHUFFLED_DATE}" | sha256sum | head -c10)"${SHUFFLED_SYMBOL}"
 
 # Create the user.
 useradd -c "${COMMENT}" -m "${USERNAME}" &> /dev/null
