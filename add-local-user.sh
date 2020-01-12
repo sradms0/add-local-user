@@ -2,10 +2,10 @@
 
 # This script adds a local user to the system.
 
-# Enforce exectution with superuser (root) privileges.
+# Enforce execution with superuser (root) privileges.
 if [[ "${UID}" -ne 0 ]]
 then 
-    echo "Root privileges are required" >&2
+    echo "Please run with sudo or as root" >&2
     exit 1
 fi
 
